@@ -62,7 +62,7 @@ The wasm build environment is a compact distribution of [node](https://nodejs.or
 [WAjic](https://github.com/schellingb/wajic) and [wasm system libraries](https://github.com/emscripten-core/emscripten/tree/main/system).
 
 
-/Mattias Gustavsson
+/Mattias Gustavsson & Matthew Yang
 
 ------------------------------------------------------------------------
 ## ORIGINAL README FROM ORIGINAL SOURCE CODE RELEASE FOLLOWS
