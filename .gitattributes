@@ -1,0 +1,3 @@
+# Fix C being confused as C++
+*.c linguist-language=C
+*.h linguist-language=C
