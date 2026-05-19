@@ -70,3 +70,7 @@ linux/
 # GNU nano annoyances
 *.save
 *.swp
+
+# Ignore Tiny C Compiler binaries
+tcc/
+tcc*.zip/
