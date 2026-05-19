@@ -33,8 +33,7 @@ I had to make a few extra changes to make it so you can build it to WASM
 for running in a browser, but those changes are contained to a single commit,
 so if you don't want them, just checkout the commit prior to that one.
 
-You can try this version in your browser here: 
-https://mattiasgustavsson.com/wasm/doom-crt
+Please note that for this port, I have chosen to switch some keymappings, such as switching Ctrl out for B when firing for closeness to space key.
 
 How to build
 ------------
