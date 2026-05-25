@@ -185,6 +185,8 @@ extern int	key_use;
 extern int	key_strafe;
 extern int	key_speed;
 
+extern int key_fire2;
+
 extern int	mousebfire;
 extern int	mousebstrafe;
 extern int	mousebforward;
@@ -255,6 +257,7 @@ default_t	defaults[] =
     {"key_straferight",&key_straferight, '.'},
 
     {"key_fire",&key_fire, 'b'},
+    {"key_fire2",&key_fire2, KEY_RCTRL},
     {"key_use",&key_use, ' '},
     {"key_strafe",&key_strafe, KEY_RALT},
     {"key_speed",&key_speed, KEY_RSHIFT},
@@ -274,6 +277,7 @@ default_t	defaults[] =
     {"key_straferight",&key_straferight, '.'},
 
     {"key_fire",&key_fire, 'b'},
+    {"key_fire2",&key_fire2, KEY_RCTRL},
     {"key_use",&key_use, ' '},
     {"key_strafe",&key_strafe, KEY_RALT},
     {"key_speed",&key_speed, KEY_RSHIFT},

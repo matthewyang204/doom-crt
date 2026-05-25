@@ -163,7 +163,9 @@ int             key_fire;
 int		key_use;
 int		key_strafe;
 int		key_speed; 
- 
+
+int key_fire2;
+
 int             mousebfire; 
 int             mousebstrafe; 
 int             mousebforward; 
@@ -334,7 +336,7 @@ void G_BuildTiccmd (ticcmd_t* cmd)
     // buttons
     cmd->chatchar = HU_dequeueChatChar(); 
  
-    if (gamekeydown[key_fire] || mousebuttons[mousebfire] 
+    if (gamekeydown[key_fire] || gamekeydown[key_fire2] || mousebuttons[mousebfire] 
 	|| joybuttons[joybfire]) 
 	cmd->buttons |= BT_ATTACK; 
  
