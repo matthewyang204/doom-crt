@@ -172,6 +172,11 @@ extern int	key_left;
 extern int	key_up;
 extern int	key_down;
 
+extern int key_right2;
+extern int key_left2;
+extern int key_up2;
+extern int key_down2;
+
 extern int	key_strafeleft;
 extern int	key_straferight;
 
@@ -242,6 +247,10 @@ default_t	defaults[] =
     {"key_left",&key_left, KEY_LEFTARROW},
     {"key_up",&key_up, KEY_UPARROW},
     {"key_down",&key_down, KEY_DOWNARROW},
+    {"key_right2",&key_right2, 'd'},
+    {"key_left2",&key_left2, 'a'},
+    {"key_up2",&key_up2, 'w'},
+    {"key_down2",&key_down2, 's'},
     {"key_strafeleft",&key_strafeleft, ','},
     {"key_straferight",&key_straferight, '.'},
 
@@ -257,6 +266,10 @@ default_t	defaults[] =
     {"key_left",&key_left, KEY_LEFTARROW},
     {"key_up",&key_up, KEY_UPARROW},
     {"key_down",&key_down, KEY_DOWNARROW},
+    {"key_right2",&key_right2, 'd'},
+    {"key_left2",&key_left2, 'a'},
+    {"key_up2",&key_up2, 'w'},
+    {"key_down2",&key_down2, 's'},
     {"key_strafeleft",&key_strafeleft, ','},
     {"key_straferight",&key_straferight, '.'},
 

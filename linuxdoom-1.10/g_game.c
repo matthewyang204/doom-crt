@@ -150,6 +150,13 @@ int		key_left;
 
 int		key_up;
 int		key_down; 
+
+int             key_right2;
+int             key_left2;
+
+int             key_up2;
+int             key_down2;
+
 int             key_strafeleft;
 int		key_straferight; 
 int             key_fire;
@@ -263,8 +270,8 @@ void G_BuildTiccmd (ticcmd_t* cmd)
     // on the keyboard and joystick
     if (joyxmove < 0
 	|| joyxmove > 0  
-	|| gamekeydown[key_right]
-	|| gamekeydown[key_left]) 
+	|| gamekeydown[key_right] || gamekeydown[key_right2]
+	|| gamekeydown[key_left] || gamekeydown[key_left2]) 
 	turnheld += ticdup; 
     else 
 	turnheld = 0; 
@@ -277,12 +284,12 @@ void G_BuildTiccmd (ticcmd_t* cmd)
     // let movement keys cancel each other out
     if (strafe) 
     { 
-	if (gamekeydown[key_right]) 
+	if (gamekeydown[key_right] || gamekeydown[key_right2]) 
 	{
 	    // fprintf(stderr, "strafe right\n");
 	    side += sidemove[speed]; 
 	}
-	if (gamekeydown[key_left]) 
+	if (gamekeydown[key_left] || gamekeydown[key_left2]) 
 	{
 	    //	fprintf(stderr, "strafe left\n");
 	    side -= sidemove[speed]; 
@@ -295,9 +302,9 @@ void G_BuildTiccmd (ticcmd_t* cmd)
     } 
     else 
     { 
-	if (gamekeydown[key_right]) 
+	if (gamekeydown[key_right] || gamekeydown[key_right2]) 
 	    cmd->angleturn -= angleturn[tspeed]; 
-	if (gamekeydown[key_left]) 
+	if (gamekeydown[key_left] || gamekeydown[key_left2]) 
 	    cmd->angleturn += angleturn[tspeed]; 
 	if (joyxmove > 0) 
 	    cmd->angleturn -= angleturn[tspeed]; 
@@ -305,12 +312,12 @@ void G_BuildTiccmd (ticcmd_t* cmd)
 	    cmd->angleturn += angleturn[tspeed]; 
     } 
  
-    if (gamekeydown[key_up]) 
+    if (gamekeydown[key_up] || gamekeydown[key_up2]) 
     {
 	// fprintf(stderr, "up\n");
 	forward += forwardmove[speed]; 
     }
-    if (gamekeydown[key_down]) 
+    if (gamekeydown[key_down] || gamekeydown[key_down2]) 
     {
 	// fprintf(stderr, "down\n");
 	forward -= forwardmove[speed]; 
