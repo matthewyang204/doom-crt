@@ -69,7 +69,7 @@ int g_tickcount = 0;
 // FPS meter globals
 static int fps_show = 0;
 static int fps_last_frame = 0;
-static int fps_last_time = 0;
+static float fps_time_accumulator = 0.0f;
 static int fps_current = 0;
 
 // Simple 4x5 bitmap font for digits 0-9 (1 = pixel on, 0 = off)
@@ -227,11 +227,15 @@ int app_proc( app_t* app, void* user_data )
 		}
         if( app_screen )
         {
-            // Update FPS counter every ~60 frames (1 second at 60+ FPS)
-            if (g_tickcount - fps_last_time > 60) {
-                fps_current = frametimer_frame_counter(frametimer) - fps_last_frame;
-                fps_last_frame = frametimer_frame_counter(frametimer);
-                fps_last_time = g_tickcount;
+            // Update FPS counter based on actual elapsed time (every 1 second)
+            float delta = frametimer_delta_time(frametimer);
+            fps_time_accumulator += delta;
+
+            if (fps_time_accumulator >= 1.0f) {
+                int current_frame = frametimer_frame_counter(frametimer);
+                fps_current = current_frame - fps_last_frame;
+                fps_last_frame = current_frame;
+                fps_time_accumulator = 0.0f;
             }
 
             // Draw FPS meter if enabled
