@@ -2196,7 +2196,7 @@ int app_run( int (*app_proc)( app_t*, void* ), void* user_data, void* memctx, vo
     if( !res ) { app_log( app, APP_LOG_LEVEL_ERROR, "Failed to activate OpenGl Context" ); goto init_failed; }
 
     app->wglSwapIntervalEXT = (BOOL (APP_GLCALLTYPE*)(int)) (uintptr_t) app->wglGetProcAddress( "wglSwapIntervalEXT" );
-    if( app->wglSwapIntervalEXT ) app->wglSwapIntervalEXT( 1 );
+    if( app->wglSwapIntervalEXT ) app->wglSwapIntervalEXT( 0 );  // Disable V-Sync (0 = disabled, 1 = enabled)
 
     // Attempt to bind opengl functions using GetProcAddress
     app->gl.CreateShader = ( APP_GLuint (APP_GLCALLTYPE*) (APP_GLenum) ) (uintptr_t) GetProcAddress( app->gl_dll, "glCreateShader" );
