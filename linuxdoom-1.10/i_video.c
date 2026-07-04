@@ -108,8 +108,8 @@ int app_proc( app_t* app, void* user_data )
     uint8_t* screen_buffer_xbgr = (uint8_t*)malloc( SCREENWIDTH * SCREENHEIGHT * 4 );
 
     frametimer_t* frametimer = frametimer_create( 0);
-    frametimer_lock_rate( frametimer, TICRATE );
-    
+    frametimer_lock_rate( frametimer, 0 );  // Set to 0 for unlimited FPS
+
     crtemu_t* crtemu = crtemu_create( CRTEMU_TYPE_LITE,0 );
 
     APP_U32 empty = 0;
