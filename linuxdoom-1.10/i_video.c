@@ -65,6 +65,84 @@ int mouserelx;
 int mouserely;
 
 int g_tickcount = 0;
+
+// FPS meter globals
+static int fps_show = 0;
+static int fps_last_frame = 0;
+static int fps_last_time = 0;
+static int fps_current = 0;
+
+// Simple 4x5 bitmap font for digits 0-9 (1 = pixel on, 0 = off)
+// Each digit is 4 pixels wide, 5 pixels tall
+static const unsigned char fps_font[10][5] = {
+    // 0
+    { 0b1110, 0b1010, 0b1010, 0b1010, 0b1110 },
+    // 1
+    { 0b0100, 0b1100, 0b0100, 0b0100, 0b1110 },
+    // 2
+    { 0b1110, 0b0010, 0b1110, 0b1000, 0b1110 },
+    // 3
+    { 0b1110, 0b0010, 0b0110, 0b0010, 0b1110 },
+    // 4
+    { 0b1010, 0b1010, 0b1110, 0b0010, 0b0010 },
+    // 5
+    { 0b1110, 0b1000, 0b1110, 0b0010, 0b1110 },
+    // 6
+    { 0b1110, 0b1000, 0b1110, 0b1010, 0b1110 },
+    // 7
+    { 0b1110, 0b0010, 0b0100, 0b1000, 0b1000 },
+    // 8
+    { 0b1110, 0b1010, 0b1110, 0b1010, 0b1110 },
+    // 9
+    { 0b1110, 0b1010, 0b1110, 0b0010, 0b1110 }
+};
+
+// Draw a single digit at position (x, y) with given color
+void draw_digit(byte* screen, int x, int y, int digit, byte color) {
+    if (digit < 0 || digit > 9) return;
+    if (x < 0 || y < 0 || x + 4 > SCREENWIDTH || y + 5 > SCREENHEIGHT) return;
+
+    const unsigned char* font_data = fps_font[digit];
+    for (int row = 0; row < 5; row++) {
+        unsigned char bits = font_data[row];
+        for (int col = 0; col < 4; col++) {
+            if (bits & (0x8 >> col)) {
+                screen[(y + row) * SCREENWIDTH + (x + col)] = color;
+            }
+        }
+    }
+}
+
+// Draw the FPS meter in the top-left corner
+void draw_fps_meter(byte* screen, int current_fps) {
+    int x = 2;
+    int y = 2;
+    byte color = 0xFC;  // A bright yellow-ish color from DOOM palette
+
+    int fps_val = current_fps;
+    int digits[4] = { -1, -1, -1, -1 };
+    int digit_count = 0;
+
+    if (fps_val == 0) {
+        digits[0] = 0;
+        digit_count = 1;
+    } else {
+        int temp = fps_val;
+        while (temp > 0 && digit_count < 4) {
+            digits[3 - digit_count] = temp % 10;
+            temp /= 10;
+            digit_count++;
+        }
+    }
+
+    int draw_x = x;
+    for (int i = 0; i < 4; i++) {
+        if (digits[i] >= 0) {
+            draw_digit(screen, draw_x, y, digits[i], color);
+            draw_x += 5;
+        }
+    }
+}
 int app_proc( app_t* app, void* user_data )
 {
 	#ifndef __wasm__
@@ -133,7 +211,9 @@ int app_proc( app_t* app, void* user_data )
 		app_input_t input = app_input( app );
 		for( int i = 0; i < input.count; ++i ) {
 			if( input.events[i].type==APP_INPUT_KEY_DOWN ) {
-				if( input.events[i].data.key < APP_KEYCOUNT ) {
+				if( input.events[i].data.key == APP_KEY_F5 ) {
+					fps_show = !fps_show;  // Toggle FPS display
+				} else if( input.events[i].data.key < APP_KEYCOUNT ) {
 					keystate[input.events[i].data.key] = 1;
 				}
 			} else if( input.events[i].type==APP_INPUT_KEY_UP ) {
@@ -147,6 +227,19 @@ int app_proc( app_t* app, void* user_data )
 		}
         if( app_screen )
         {
+            // Update FPS counter every ~60 frames (1 second at 60+ FPS)
+            if (g_tickcount - fps_last_time > 60) {
+                fps_current = frametimer_frame_counter(frametimer) - fps_last_frame;
+                fps_last_frame = frametimer_frame_counter(frametimer);
+                fps_last_time = g_tickcount;
+            }
+
+            // Draw FPS meter if enabled
+            if (fps_show) {
+                draw_fps_meter(app_screen, fps_current);
+            }
+
+            // ...existing code...
             for( int i = 0; i < SCREENWIDTH * SCREENHEIGHT; ++i )
             {
                 uint8_t scr = app_screen[ i ];
