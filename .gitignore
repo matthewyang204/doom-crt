@@ -35,6 +35,7 @@
 *.i*86
 *.x86_64
 *.hex
+doom.html
 
 # Debug files
 *.dSYM/
@@ -78,3 +79,5 @@ tcc*.zip/
 # Ignore compact WASM compiler stuff
 wasm/
 wasm-b*.zip
+*.tmp
+*.wasm
