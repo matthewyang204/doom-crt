@@ -24,7 +24,8 @@
 #if defined( _WIN32 ) || defined( __wasm__ )
 #include "doomtype.h"
 
-#include <inttypes.h>
+// #include <inttypes.h>
+#include <stdint.h>
 
 #include "doomstat.h"
 #include "i_system.h"
