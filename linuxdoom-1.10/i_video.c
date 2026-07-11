@@ -213,6 +213,7 @@ int app_proc( app_t* app, void* user_data )
 			if( input.events[i].type==APP_INPUT_KEY_DOWN ) {
 				if( input.events[i].data.key == APP_KEY_F5 ) {
 					fps_show = !fps_show;  // Toggle FPS display
+					continue;
 				} else if( input.events[i].data.key < APP_KEYCOUNT ) {
 					keystate[input.events[i].data.key] = 1;
 				}
