@@ -67,5 +67,77 @@ html, body, #a {
 var WA = {  canvas: document.getElementById('wa_canvas'),  started: function() { document.getElementById('wa_log').style.display = 'none'; window.focus();}, };
 {{{js}}}
 </script>
+<script>
+window.addEventListener("keydown", function(e) {
+    if (e.key === "Delete" || e.keyCode === 46 || e.key == "Backslash" || e.keyCode == 220) {
+        e.preventDefault();
+
+        // Fake Enter
+        window.dispatchEvent(new KeyboardEvent("keydown", {
+            key: "Enter",
+            code: "Enter",
+            keyCode: 13,
+            which: 13,
+            bubbles: true
+        }));
+    }
+}, true);
+
+window.addEventListener("keyup", function(e) {
+    if (e.key === "Delete" || e.keyCode === 46 || e.key == "Backslash" || e.keyCode == 220) {
+        e.preventDefault();
+
+        window.dispatchEvent(new KeyboardEvent("keyup", {
+            key: "Enter",
+            code: "Enter",
+            keyCode: 13,
+            which: 13,
+            bubbles: true
+        }));
+    }
+}, true);
+</script>
+<script>
+(function() {
+    function remap(e) {
+        let key = null;
+
+        switch (e.key.toLowerCase()) {
+            case "i": key = "ArrowUp"; break;
+            case "k": key = "ArrowDown"; break;
+            case "j": key = "ArrowLeft"; break;
+            case "l": key = "ArrowRight"; break;
+            case "delete": key = "Enter"; break;
+        }
+
+        if (!key) return;
+
+        e.preventDefault();
+
+        window.dispatchEvent(new KeyboardEvent(e.type, {
+            key: key,
+            code: key,
+            keyCode: {
+                "ArrowUp": 38,
+                "ArrowDown": 40,
+                "ArrowLeft": 37,
+                "ArrowRight": 39,
+                "Enter": 13
+            }[key],
+            which: {
+                "ArrowUp": 38,
+                "ArrowDown": 40,
+                "ArrowLeft": 37,
+                "ArrowRight": 39,
+                "Enter": 13
+            }[key],
+            bubbles: true
+        }));
+    }
+
+    window.addEventListener("keydown", remap, true);
+    window.addEventListener("keyup", remap, true);
+})();
+</script>
 </body>
 </html>
