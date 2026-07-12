@@ -71,8 +71,8 @@ The wasm build environment is a compact distribution of [node](https://nodejs.or
 # Keymaps
 - `Ctrl` or `B` for fire
 - Arrow keys & WASD for movement (WASM port adds IJKL as right-hand arrow keys for some other devices that capture standard keys)
-- Space to use
-- F5 for FPS meter
+- `Space` to use
+- `F5` for FPS meter
 - `Esc` or backtick for main menu
 
 /Mattias Gustavsson & Matthew Yang
