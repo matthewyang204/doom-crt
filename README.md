@@ -29,10 +29,6 @@ the TinySoundFont library, which is used as a back-end for music playback.
 It’s not a particularly nice port, quick and dirty is more like it. 
 Feel free to fork it and clean it up if you want to :-)
 
-I had to make a few extra changes to make it so you can build it to WASM
-for running in a browser, but those changes are contained to a single commit,
-so if you don't want them, just checkout the commit prior to that one.
-
 Please note that for this port, I have chosen to switch some keymappings, such as switching Ctrl out for B when firing for closeness to space key.
 
 # Playing This Port
