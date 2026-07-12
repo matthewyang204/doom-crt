@@ -37,8 +37,8 @@ Please note that for this port, I have chosen to switch some keymappings, such a
 
 # Playing This Port
 You do not need to run any executable to play this port. It is fully compatible with WebAssembly and can simply be played in the browser at the following mirrors:
-- [Vercel](https://doom-crt-mu.vercel.app/)
 - [GitHub Pages](https://matthewyang204.github.io/doom-crt/)
+- [Vercel](https://doom-crt-mu.vercel.app/)
 - [rawgit.hack](https://rawcdn.githack.com/matthewyang204/doom-crt/84c65fdc57fcb2db16b9d9bf7f6a991be145abdd/index.html)
 
 However, if you wish to play it as a native executable on your computer, you can download the ZIP file and extract it to a folder, keeping the WAD next to the `doom.exe`. You can then just run the EXE.
