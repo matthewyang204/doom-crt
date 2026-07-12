@@ -29,7 +29,7 @@ the TinySoundFont library, which is used as a back-end for music playback.
 It’s not a particularly nice port, quick and dirty is more like it. 
 Feel free to fork it and clean it up if you want to :-)
 
-Please note that for this port, I have chosen to switch some keymappings, such as switching Ctrl out for B when firing for closeness to space key.
+Please note that for this port, I have chosen to add some keymappings, such as adding B as well as Ctrl when firing for closeness to space key. You can see all of this in the Keymaps section.
 
 # Playing This Port
 You do not need to run any executable to play this port. It is fully compatible with WebAssembly and can simply be played in the browser at the following mirrors:
@@ -68,6 +68,7 @@ Unzip it so that the `wasm` folder in the zip file is at your repository root.
 The wasm build environment is a compact distribution of [node](https://nodejs.org/en/download/), [clang/wasm-ld](https://releases.llvm.org/download.html),
 [WAjic](https://github.com/schellingb/wajic) and [wasm system libraries](https://github.com/emscripten-core/emscripten/tree/main/system).
 
+# Keymaps
 
 /Mattias Gustavsson & Matthew Yang
 
