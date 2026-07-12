@@ -108,6 +108,7 @@ window.addEventListener("keyup", function(e) {
             case "j": key = "ArrowLeft"; break;
             case "l": key = "ArrowRight"; break;
             case "delete": key = "Enter"; break;
+            case "`": key = "Escape"; break;
         }
 
         if (!key) return;
@@ -122,14 +123,16 @@ window.addEventListener("keyup", function(e) {
                 "ArrowDown": 40,
                 "ArrowLeft": 37,
                 "ArrowRight": 39,
-                "Enter": 13
+                "Enter": 13,
+                "Escape": 27
             }[key],
             which: {
                 "ArrowUp": 38,
                 "ArrowDown": 40,
                 "ArrowLeft": 37,
                 "ArrowRight": 39,
-                "Enter": 13
+                "Enter": 13,
+                "Escape": 27
             }[key],
             bubbles: true
         }));
