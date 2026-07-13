@@ -1,7 +1,7 @@
 DOOM-CRT
 ========
 
-[![doom](doom.jpg)](https://mattiasgustavsson.com/wasm/doom-crt)
+[![doom](images/doom.jpg)](https://mattiasgustavsson.com/wasm/doom-crt)
 
 One thing I’ve wanted to do for some time, is take the original source 
 code release for DOOM, the one that only had linux support, and make my 
