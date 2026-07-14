@@ -43,7 +43,7 @@ However, if you wish to play it as a native executable on your computer, you can
 If you wish to play on a UNIX/UNIX-like system, you can try [WINE](https://winehq.org), which provides a translation layer for Windows applications to run on UNIX systems.
 
 ## Non-Shareware Versions
-I *heard* that these domains yield the WASM port, both hosted on Vercel:
+I *heard* that these mirrors yield the WASM port, both hosted on Vercel:
 - [DOOM I](https://one-doomcrt.vercel.app/)
 - [The Ultimate DOOM](https://ultimate-doomcrt.vercel.app/)
 
