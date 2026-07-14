@@ -42,6 +42,13 @@ However, if you wish to play it as a native executable on your computer, you can
 
 If you wish to play on a UNIX/UNIX-like system, you can try [WINE](https://winehq.org), which provides a translation layer for Windows applications to run on UNIX systems.
 
+## Non-Shareware Versions
+I *heard* that these domains yield the WASM port, both hosted on Vercel:
+- [DOOM I](https://one-doomcrt.vercel.app/)
+- [The Ultimate DOOM](https://ultimate-doomcrt.vercel.app/)
+
+To use the native version, you can build or download a binary build of the engine, and move it to a fresh folder containing your owned WAD (you must own a copy of/buy the WAD beforehand). Then just run it from the folder.
+
 How to build
 ------------
 To build, start a visual studio developer command prompt and run the command:
