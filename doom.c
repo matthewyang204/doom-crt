@@ -144,9 +144,10 @@ int doom_access( char const* _FileName, int _AccessMode ) {
 #undef APP_IMPLEMENTATION
 
 #if defined(_WIN32) && (_WIN32_WINNT < 0x0600)
-#ifndef InitializeCriticalSectionEx
-#define InitializeCriticalSectionEx(cs, spin, flags) InitializeCriticalSectionAndSpinCount((cs), spin)
+#ifdef InitializeCriticalSectionEx
+#undef InitializeCriticalSectionEx
 #endif
+#define InitializeCriticalSectionEx(cs, spin, flags) InitializeCriticalSectionAndSpinCount((cs), spin)
 #endif
 
 #define FRAMETIMER_IMPLEMENTATION
