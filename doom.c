@@ -143,6 +143,12 @@ int doom_access( char const* _FileName, int _AccessMode ) {
 #include "libs_win32/app.h"
 #undef APP_IMPLEMENTATION
 
+#if defined(_WIN32) && (_WIN32_WINNT < 0x0600)
+#ifndef InitializeCriticalSectionEx
+#define InitializeCriticalSectionEx(cs, spin, flags) InitializeCriticalSectionAndSpinCount((cs), spin)
+#endif
+#endif
+
 #define FRAMETIMER_IMPLEMENTATION
 #include "libs_win32/frametimer.h"
 
