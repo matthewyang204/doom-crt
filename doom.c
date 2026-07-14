@@ -151,7 +151,7 @@ int doom_access( char const* _FileName, int _AccessMode ) {
 
 #ifndef __wasm__
 #define THREAD_IMPLEMENTATION
-#if defined( __TINYC__ )
+#if defined( __TINYC__ ) || _WIN32_WINNT < 0x0600
 	typedef struct _RTL_CONDITION_VARIABLE { PVOID Ptr; } RTL_CONDITION_VARIABLE, *PRTL_CONDITION_VARIABLE;
 	typedef RTL_CONDITION_VARIABLE CONDITION_VARIABLE, *PCONDITION_VARIABLE;
 	static VOID (*InitializeConditionVariable)( PCONDITION_VARIABLE );
