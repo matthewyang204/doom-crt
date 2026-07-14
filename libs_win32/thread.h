@@ -36,10 +36,8 @@ static BOOL SleepConditionVariableCS(CONDITION_VARIABLE* cv, CRITICAL_SECTION* c
     return result == WAIT_OBJECT_0;
 }
 
-#endif
-
-#ifndef InitializeCriticalSectionEx
 #define InitializeCriticalSectionEx(cs, spin, flags) InitializeCriticalSectionAndSpinCount((cs), spin)
+
 #endif
 
 #ifndef thread_h
