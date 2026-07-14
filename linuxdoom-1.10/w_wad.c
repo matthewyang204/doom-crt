@@ -73,9 +73,12 @@ void strupr (char* s)
 int wadfilelength (int handle) 
 { 
     struct stat	fileinfo;
-    int p = lseek(handle, 0,SEEK_CUR);
+	int p;
+	int res;
+
+    p = lseek(handle, 0,SEEK_CUR);
 	lseek(handle, 0, SEEK_END);
-	int res = lseek(handle,0,SEEK_CUR);
+	res = lseek(handle,0,SEEK_CUR);
 	lseek(handle, p, SEEK_SET);
 
     return res;
