@@ -10,6 +10,34 @@ Do this:
 before you include this file in *one* C/C++ file to create the implementation.
 */
 
+// For Windows XP and older, define events
+#if _WIN32_WINNT < 0x0600
+
+typedef struct
+{
+    HANDLE event;
+} CONDITION_VARIABLE;
+
+static void InitializeConditionVariable(CONDITION_VARIABLE* cv)
+{
+    cv->event = CreateEvent(NULL, FALSE, FALSE, NULL);
+}
+
+static void WakeConditionVariable(CONDITION_VARIABLE* cv)
+{
+    SetEvent(cv->event);
+}
+
+static BOOL SleepConditionVariableCS(CONDITION_VARIABLE* cv, CRITICAL_SECTION* cs, DWORD timeout)
+{
+    LeaveCriticalSection(cs);
+    DWORD result = WaitForSingleObject(cv->event, timeout);
+    EnterCriticalSection(cs);
+    return result == WAIT_OBJECT_0;
+}
+
+#endif
+
 #ifndef thread_h
 #define thread_h
 
