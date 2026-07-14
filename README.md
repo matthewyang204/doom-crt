@@ -63,7 +63,9 @@ You can also build with Tiny C Compiler:
 	
 	tcc\tcc doom.c
 	
-You can download tcc here: [tiny-c-compiler](https://github.com/mattiasgustavsson/template_project/releases/tag/tiny-c-compiler) for either 32 or 64 bit Windows. Unzip it so that the `tcc` folder in the zip file is at your repository root.
+You can download tcc here: [tiny-c-compiler](https://github.com/mattiasgustavsson/template_project/releases/tag/tiny-c-compiler) for 64 bit Windows (use the win64 build). Unzip it so that the `tcc` folder in the zip file is at your repository root.
+
+**Note:** The game may end up having critical memory pointer-related errors/issues if compiled with the win32 build or with the `-m32` flag on the win64 version. If you need a 32-bit version, you should compile it with the MSVC (visual studio) toolchain, but select the x86 native tools instead of the regular devcmd option when opening it.
 
 It can also be built into an HTML file to run in a browser, using WAjic:
 
