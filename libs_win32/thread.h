@@ -38,6 +38,10 @@ static BOOL SleepConditionVariableCS(CONDITION_VARIABLE* cv, CRITICAL_SECTION* c
 
 #endif
 
+#ifndef InitializeCriticalSectionEx
+#define InitializeCriticalSectionEx(cs, spin, flags) InitializeCriticalSectionAndSpinCount((cs), spin)
+#endif
+
 #ifndef thread_h
 #define thread_h
 
