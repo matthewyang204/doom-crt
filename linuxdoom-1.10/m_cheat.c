@@ -55,7 +55,7 @@ cht_CheckCheat
 
     if (key >= 'A' && key <= 'Z')
         key = key + ('a' - 'A');
-    if (key < 'a' || key > 'z')
+    if ((key < 'a' || key > 'z') && (key < '0' || key > '9') && key != ' ')
     {
         return 0; 
     }
